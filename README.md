@@ -6,3 +6,17 @@
 ##
 Laravel And ReactJS Product Dashboard
 ##
+
+<p align="center">
+  <img src="./img/login.png" width="500" alt="Home">
+   <img src="./img/register.png" width="500" alt="Home">
+</p>
+<p align="center"><img src="./img/dash.png" width="800" alt="Home">
+</p>
+<p align="center">
+  <img src="./img/add_product.png" width="500" alt="Home">
+   <img src="./img/edit-product.png" width="500" alt="Home">
+</p>
+<p align="center"><img src="./img/sign-out.png" width="800" alt="Home">
+</p>
+
