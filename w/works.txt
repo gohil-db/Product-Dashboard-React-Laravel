@@ -1,0 +1,134 @@
+
+### First create Backend in Laravel
+✅ 1. Create Project
+laravel new backend
+cd backend
+php artisan serve
+
+✅ 2. Setup Database
+DB_DATABASE=your_db_name
+DB_USERNAME=root
+DB_PASSWORD=
+
+✅ 3. Install Sanctum (Token Auth)
+composer require laravel/sanctum
+php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+php artisan migrate
+
+✅ 4. Configure Sanctum
+In app/Models/User.php:
+use Laravel\Sanctum\HasApiTokens;
+class User extends Authenticatable
+{
+    use HasApiTokens;
+}
+
+✅ 5. Create Auth Controller
+php artisan make:controller API/AuthController
+
+✅ 6. Write Auth Logic
+📌 app/Http/Controllers/API/AuthController.php
+
+✅ 7. Add API Routes
+📌 routes/api.php
+
+✅ 8. Test API (Thunder Client / Postman)
+🔹 Register
+POST /api/register
+{
+  "name": "Dharmendra",
+  "email": "test@gmail.com",
+  "password": "123456"
+}
+
+🔹 Login
+POST /api/login
+{
+  "email": "test@gmail.com",
+  "password": "123456"
+}
+
+###Erros Solution 
+bootstrap/app.php
+api: __DIR__.'/../routes/api.php',
+
+###Product module
+🧱 STEP 1: Create Model + Migration
+php artisan make:model Product -m
+📁 database/migrations/...create_products_table.php
+🧠 STEP 2: Product Model
+app/Models/Product.php
+🎯 STEP 3: Create Controller
+php artisan make:controller API/ProductController
+📁 app/Http/Controllers/API/ProductController.php
+⚙️ STEP 4: CRUD Logic
+📁 app/Http/Controllers/API/ProductController.php
+🔐 STEP 5: API Routes (Protected)
+    routes/api.php
+
+
+Step : Test in Tinker Add records in db
+php artisan tinker
+use App\Models\Category;
+Category::create(['name' => 'Electronics']);
+
+#################################-------Front End-----##########################################
+⚛️ STEP 1: Create React App
+npm create vite@latest frontend
+cd frontend
+npm install
+npm run dev
+
+📦 STEP 2: Install Required Packages
+npm install axios react-router-dom @reduxjs/toolkit react-redux
+
+🧱 STEP 3: Clean Folder Structure
+Inside src/ create:
+src/
+ ├── app/
+ ├── features/
+ ├── services/
+ ├── pages/
+ ├── components/
+
+🌐 STEP 4: Axios Setup (IMPORTANT)
+    📁 src/services/api.js
+
+🔐 STEP 5: Auth API Functions
+    📁 src/services/authService.js
+
+🧠 STEP 6: Redux Store Setup
+    📁 src/app/store.js
+
+🧠 STEP 7: Auth Slice
+    📁 src/features/authSlice.js
+
+🔗 STEP 8: Connect Redux to App
+    📁 src/main.jsx
+
+🛣️ STEP 9: Routing Setup
+    📁 src/App.jsx
+
+🔒 STEP 10: Private Route
+    📁 src/components/PrivateRoute.jsx
+
+🔐 STEP 11: Login Page
+    📁 src/pages/Login.jsx
+
+🏠 STEP 12: Dashboard Page
+    📁 src/pages/Dashboard.jsx
+
+##Run App
+npm run dev
+
+
+
+
+📦 STEP 3: Products Module (REAL CRUD + TABLE)
+🧱 1. Backend Check (Quick)
+    GET    /api/products
+    POST   /api/products
+    PUT    /api/products/{id}
+    DELETE /api/products/{id}
+🌐 2. Create Product API Service
+    📁 src/services/productService.js
